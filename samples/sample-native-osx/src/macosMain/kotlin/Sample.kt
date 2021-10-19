@@ -8,6 +8,7 @@
  * repository.
  *
  * Copyright (C) 2021-present Benoit 'BoD' Lubek (BoD@JRAF.org)
+ * Copyright (C) 2021-present Yu Jinyan (i@yujinyan.me)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -586,7 +587,8 @@ class Sample {
             res.appendLine(
                 levelStr + when (block) {
                     is BulletedListItemBlock -> "-"
-                    is ChildPageBlock -> "->"
+                    is ChildPageBlock -> "-> ${block.title}"
+                    is ChildDatabaseBlock -> "-> ${block.title}"
                     is Heading1Block -> "#"
                     is Heading2Block -> "##"
                     is Heading3Block -> "###"
@@ -598,7 +600,6 @@ class Sample {
                     is CodeBlock -> "```${block.language}"
                     is EquationBlock -> "$$"
                     is BookmarkBlock -> "Bookmark: ${block.url}"
-                    is ChildDatabaseBlock -> "->"
                     is EmbedBlock -> "Embed: ${block.url}"
                     is QuoteBlock -> ">"
                     is TableOfContentsBlock -> "toc"
