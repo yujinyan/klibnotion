@@ -29,6 +29,7 @@ import org.jraf.klibnotion.internal.api.model.ApiConverter
 import org.jraf.klibnotion.internal.api.model.apiToModel
 import org.jraf.klibnotion.internal.api.model.base.ApiEmojiOrFileConverter
 import org.jraf.klibnotion.internal.api.model.date.ApiDateStringConverter
+import org.jraf.klibnotion.internal.api.model.file.ApiFileConverter
 import org.jraf.klibnotion.internal.api.model.richtext.ApiRichTextConverter
 import org.jraf.klibnotion.internal.model.block.BookmarkBlockImpl
 import org.jraf.klibnotion.internal.model.block.BulletedListItemBlockImpl
@@ -42,6 +43,7 @@ import org.jraf.klibnotion.internal.model.block.EquationBlockImpl
 import org.jraf.klibnotion.internal.model.block.Heading1BlockImpl
 import org.jraf.klibnotion.internal.model.block.Heading2BlockImpl
 import org.jraf.klibnotion.internal.model.block.Heading3BlockImpl
+import org.jraf.klibnotion.internal.model.block.ImageBlockImpl
 import org.jraf.klibnotion.internal.model.block.NumberedListItemBlockImpl
 import org.jraf.klibnotion.internal.model.block.ParagraphBlockImpl
 import org.jraf.klibnotion.internal.model.block.QuoteBlockImpl
@@ -195,6 +197,13 @@ internal object ApiInBlockConverter : ApiConverter<ApiBlock, Block>() {
                 id = id,
                 created = created,
                 lastEdited = lastEdited,
+            )
+
+            "image" -> ImageBlockImpl(
+                id = id,
+                created = created,
+                lastEdited = lastEdited,
+                url = apiModel.image!!.apiToModel(ApiFileConverter).url,
             )
 
             else -> UnknownTypeBlockImpl(

@@ -25,14 +25,17 @@
 package org.jraf.klibnotion.internal.api.model.property.value
 
 import kotlinx.serialization.Serializable
+import org.jraf.klibnotion.internal.api.model.file.ApiExternalFile
 import org.jraf.klibnotion.internal.api.model.file.ApiFile
+import org.jraf.klibnotion.internal.api.model.file.ApiNotionFile
 
 /**
  * See [Reference](https://developers.notion.com/reference/page#all-property-values).
  */
 @Serializable
 internal data class ApiPropertyValueFile(
+    val type: String,
     val name: String? = null,
-    val file: ApiFile? = null,
-    val external: ApiFile? = null,
+    val file: ApiNotionFile? = null,
+    val external: ApiExternalFile? = null,
 )
