@@ -26,6 +26,7 @@
 package org.jraf.klibnotion.internal.api.model.block
 
 import kotlinx.serialization.Serializable
+import org.jraf.klibnotion.internal.api.model.file.ApiFile
 
 /**
  * See [Reference](https://developers.notion.com/reference/block).
@@ -53,4 +54,5 @@ internal data class ApiBlock(
     val embed: ApiBlockEmbed? = null,
     val quote: ApiBlockText? = null,
     val bookmark: ApiBlockBookmark? = null,
+    val image: ApiFile? = null,
 )

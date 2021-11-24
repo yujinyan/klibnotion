@@ -8,6 +8,7 @@
  * repository.
  *
  * Copyright (C) 2021-present Benoit 'BoD' Lubek (BoD@JRAF.org)
+ * Copyright (C) 2021-present Yu Jinyan (i@yujinyan.me)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,17 +25,10 @@
 
 package org.jraf.klibnotion.internal.api.model.file
 
-import org.jraf.klibnotion.internal.api.model.ApiConverter
-import org.jraf.klibnotion.internal.model.file.FileImpl
-import org.jraf.klibnotion.model.file.File
+import kotlinx.serialization.Serializable
 
-internal object ApiFileConverter : ApiConverter<ApiFile, File>() {
-    override fun apiToModel(apiModel: ApiFile) = FileImpl(
-        name = null,
-        url = when (apiModel.type) {
-            "external" -> apiModel.external!!.url
-            "file" -> apiModel.file!!.url
-            else -> throw AssertionError("File object type should be 'external' or 'file', but received ${apiModel.type}")
-        }
-    )
-}
+@Serializable
+internal data class ApiNotionFile(
+    val url: String,
+    val expiry_time: String,
+)

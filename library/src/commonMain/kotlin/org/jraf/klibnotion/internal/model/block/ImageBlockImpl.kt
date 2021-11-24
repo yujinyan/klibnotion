@@ -8,6 +8,7 @@
  * repository.
  *
  * Copyright (C) 2021-present Benoit 'BoD' Lubek (BoD@JRAF.org)
+ * Copyright (C) 2021-present Yu Jinyan (i@yujinyan.me)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,19 +23,21 @@
  * limitations under the License.
  */
 
-package org.jraf.klibnotion.internal.api.model.file
+package org.jraf.klibnotion.internal.model.block
 
-import org.jraf.klibnotion.internal.api.model.ApiConverter
-import org.jraf.klibnotion.internal.model.file.FileImpl
-import org.jraf.klibnotion.model.file.File
+import org.jraf.klibnotion.model.base.UuidString
+import org.jraf.klibnotion.model.block.Block
+import org.jraf.klibnotion.model.block.ImageBlock
+import org.jraf.klibnotion.model.date.Timestamp
+import org.jraf.klibnotion.model.richtext.RichTextList
 
-internal object ApiFileConverter : ApiConverter<ApiFile, File>() {
-    override fun apiToModel(apiModel: ApiFile) = FileImpl(
-        name = null,
-        url = when (apiModel.type) {
-            "external" -> apiModel.external!!.url
-            "file" -> apiModel.file!!.url
-            else -> throw AssertionError("File object type should be 'external' or 'file', but received ${apiModel.type}")
-        }
-    )
+internal data class ImageBlockImpl(
+    override val id: UuidString,
+    override val created: Timestamp,
+    override val lastEdited: Timestamp,
+    override val url: String,
+) : ImageBlock {
+    override val name: String? = null
+    override val text: RichTextList? = null
+    override val children: List<Block>? = null
 }

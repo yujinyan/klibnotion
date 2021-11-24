@@ -48,6 +48,7 @@ import org.jraf.klibnotion.model.block.EquationBlock
 import org.jraf.klibnotion.model.block.Heading1Block
 import org.jraf.klibnotion.model.block.Heading2Block
 import org.jraf.klibnotion.model.block.Heading3Block
+import org.jraf.klibnotion.model.block.ImageBlock
 import org.jraf.klibnotion.model.block.NumberedListItemBlock
 import org.jraf.klibnotion.model.block.ParagraphBlock
 import org.jraf.klibnotion.model.block.QuoteBlock
@@ -655,6 +656,7 @@ class Sample {
                     is CodeBlock -> "```${block.language}"
                     is EquationBlock -> "$$"
                     is BookmarkBlock -> "Bookmark: ${block.url}"
+                    is ImageBlock -> "![](${block.url})"
                     is EmbedBlock -> "Embed: ${block.url}"
                     is QuoteBlock -> ">"
                     is DividerBlock -> "---"
