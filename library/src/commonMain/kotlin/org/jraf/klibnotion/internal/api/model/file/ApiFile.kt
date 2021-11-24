@@ -32,5 +32,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 internal data class ApiFile(
-    val url: String,
+    val type: String,
+    val external: ApiExternalFile? = null,
+    val file: ApiNotionFile? = null,
 )
