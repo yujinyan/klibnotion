@@ -144,13 +144,13 @@ publishing {
     }
 }
 
-signing {
-    // Note: declare the signature key, password and file in your home's gradle.properties like this:
-    // signing.keyId=<8 character key>
-    // signing.password=<your password>
-    // signing.secretKeyRingFile=<absolute path to the gpg private key>
-    sign(publishing.publications)
-}
+//signing {
+// Note: declare the signature key, password and file in your home's gradle.properties like this:
+// signing.keyId=<8 character key>
+// signing.password=<your password>
+// signing.secretKeyRingFile=<absolute path to the gpg private key>
+//    sign(publishing.publications)
+//}
 
 tasks.dokkaHtml.configure {
     outputDirectory.set(rootProject.file("docs"))
